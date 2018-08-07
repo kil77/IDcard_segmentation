@@ -16,7 +16,7 @@ IGNORE_LABEL = 255
 IMAGENET = './pretrained_models'
 IMAGE_PATH = './datasets/IDImage/JPGImage'
 INPUT_SIZE = 512
-IS_TRAINING = False
+IS_TRAINING = True
 LEARNING_RATE = 0.001
 MOMENTUM = 0.9
 NUM_CLASSES = 2
@@ -32,7 +32,7 @@ RESTORE_FROM = None
 SAVE_NUM_IMAGES = 1
 SAVE_PRED_EVERY = 1000
 SNAPSHOT_DIR = './snapshots'
-SPLIT_NAME = 'val'
+SPLIT_NAME = 'train'
 WEIGHT_DECAY = 1e-4
 
 parser = argparse.ArgumentParser(description="DeepLabV3")

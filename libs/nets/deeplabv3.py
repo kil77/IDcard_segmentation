@@ -113,9 +113,9 @@ def deeplabv3(inputs,
               with tf.variable_scope('unit_%d' % (i + 1), values=[net]):
                 net = bottleneck(net, depth=base_depth * 4, depth_bottleneck=base_depth, stride=1)
 
-            short_cut_2 = resnet_utils.conv2d_same(net, 16, 3, stride=1, scope='short_cut_2')
-            short_cut_2 = slim.utils.collect_named_outputs(end_points_collection, sc.name, short_cut_2)
-            short_cut_2 = tf.image.resize_bilinear(short_cut_2, [ih, iw])
+            # short_cut_2 = resnet_utils.conv2d_same(net, 16, 3, stride=1, scope='short_cut_2')
+            # short_cut_2 = slim.utils.collect_named_outputs(end_points_collection, sc.name, short_cut_2)
+            # short_cut_2 = tf.image.resize_bilinear(short_cut_2, [ih, iw])
 
             with tf.variable_scope('unit_3', values=[net]):
               net = bottleneck(net, depth=base_depth * 4, depth_bottleneck=base_depth, stride=2)
@@ -127,9 +127,9 @@ def deeplabv3(inputs,
               with tf.variable_scope('unit_%d' % (i + 1), values=[net]):
                 net = bottleneck(net, depth=base_depth * 4, 
                   depth_bottleneck=base_depth, stride=1)
-            short_cut_3 = resnet_utils.conv2d_same(net, 16, 3, stride=1, scope='short_cut_3')
-            short_cut_3 = slim.utils.collect_named_outputs(end_points_collection, sc.name, short_cut_3)
-            short_cut_3 = tf.image.resize_bilinear(short_cut_3, [ih, iw])
+            # short_cut_3 = resnet_utils.conv2d_same(net, 16, 3, stride=1, scope='short_cut_3')
+            # short_cut_3 = slim.utils.collect_named_outputs(end_points_collection, sc.name, short_cut_3)
+            # short_cut_3 = tf.image.resize_bilinear(short_cut_3, [ih, iw])
 
             with tf.variable_scope('unit_4', values=[net]):
               net = bottleneck(net, depth=base_depth * 4, 
