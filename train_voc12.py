@@ -13,7 +13,7 @@ import time
 
 from config import *
 from libs.datasets.dataset_factory import read_data
-from libs.nets import deeplabv3
+from libs.nets import deeplabv3,deeplabv3_mini
 
 slim = tf.contrib.slim
 streaming_mean_iou = tf.contrib.metrics.streaming_mean_iou

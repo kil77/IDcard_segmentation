@@ -141,26 +141,12 @@ def deeplabv3_mini(inputs,
                     with tf.variable_scope('block3', [net]) as sc:
                         base_depth = 256
 
-                        num_units = 6
-                        if depth == 101:
-                            num_units = 23
-                        elif depth == 152:
-                            num_units = 36
-
-                        for i in range(num_units):
+                        for i in range(2):
                             with tf.variable_scope('unit_%d' % (i + 1), values=[net]):
                                 net = bottleneck(net, depth=base_depth * 4,
                                                  depth_bottleneck=base_depth, stride=1)
                         net = slim.utils.collect_named_outputs(end_points_collection,
                                                                sc.name, net)
-
-                    with tf.variable_scope('block4', [net]) as sc:
-                        base_depth = 512
-                        for i in range(3):
-                            with tf.variable_scope('unit_%d' % (i + 1), values=[net]):
-                                net = bottleneck(net, depth=base_depth * 4, depth_bottleneck=base_depth, stride=1,
-                                                 rate=2 * multi_grid[i])
-                        net = slim.utils.collect_named_outputs(end_points_collection, sc.name, net)
 
                     if aspp:
                         with tf.variable_scope('aspp', [net]) as sc:
